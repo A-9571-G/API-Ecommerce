@@ -5,9 +5,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
+// Cargar middlewares
+const {midelware} = require('./admin/admin');
 
 // cargar rutas
-const userRouter = require('./router/routers');
+const {userRouter} = require('./router/routers');
 
 // general middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -25,7 +27,14 @@ const options = {
 }
 app.use(cors(options));
 // rutas
-app.use('/', userRouter);
+
+
+userRouter(app);
+
+app.use(midelware.logError);
+app.use(midelware.ormErrorHandler);
+app.use(midelware.errorHandler);
+app.use(midelware.boomErrorHandler);
 
 
 // exportar
