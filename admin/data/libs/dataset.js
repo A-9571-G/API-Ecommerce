@@ -4,10 +4,10 @@ const {Pool} = require('pg');
 const {Sequelize} = require('sequelize');
 
 const{dbconfig} = require('../config/config');
-const{setupModel} = require('../../../models/model');
+const{setupModel} = require('../../../db/models/model');
 
-const PASSWORD = encodeURIComponent(dbconfig.BD_PASSWORD);
-const USER = encodeURIComponent(dbconfig.BD_USER);
+const PASSWORD = encodeURIComponent(dbconfig.DB_PASSWORD);
+const USER = encodeURIComponent(dbconfig.DB_USER);
 const URL = `postgres://${USER}:${PASSWORD}@${dbconfig.DB_HOST}:${dbconfig.DB_PORT}/${dbconfig.DB_NAME}`
 
 const sequelize = new Sequelize(URL,{
@@ -16,8 +16,6 @@ const sequelize = new Sequelize(URL,{
 });
 
 setupModel(sequelize);
-
-sequelize.sync();
 
 module.exports = {
   // pool

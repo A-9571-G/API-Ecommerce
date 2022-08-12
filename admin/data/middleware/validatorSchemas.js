@@ -8,11 +8,12 @@ function Handler(schema, property) {
     const data = req[property];
     const { error } = schema.validate(data, { abortEarly: false });
     if (error) {
-      res.status(401).send({
+/*       res.status(401).send({
         statusCode: 401,
         error: 'unauthorized',
         message: 'Llena los campos correspondientes'
-      });
+      }); */
+      next(boom.badRequest(error));
     }
     next();
   }

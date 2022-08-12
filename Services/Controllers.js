@@ -1,7 +1,8 @@
 "use strict"
 module.exports ={
-  USER : require('./data/User'),
-  PRODUCT: require('./data/Product'),
-  CATEGORY: require('./data/Category'),
-  SHOPPINGCAR: require('./data/ShoppingCar')
+  USER : require('./data/User.service'),
+  PRODUCT: require('./data/Product.service'),
+  CATEGORY: require('./data/Category.service'),
+  SHOPPINGCAR: require('./data/ShoppingCar'),
+  CONSUMER: require('./data/consumers.service')
 }
