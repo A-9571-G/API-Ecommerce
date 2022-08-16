@@ -3,7 +3,13 @@
 const {} = require('../../admin/admin');
 // STRUCTURE
 module.exports ={
-  listshopping: async ()=>{
+  find: async ()=>{
+
+  },
+  findOne: async ()=>{
+
+  },
+  update: async ()=>{
 
   },
   numberShoppin: async()=>{

@@ -2,7 +2,7 @@
 
 // CONST
   const express = require('express');
-  const { USER, CATEGORY, PRODUCT, SHOPPINGCAR,CONSUMER } = require('../../Services/Controllers');
+  const { USER, CATEGORY, PRODUCT, ORDERS ,CONSUMER } = require('../../Services/Controllers');
   const {scheme, valide} = require('../../admin/admin');
   const routerV1 = express.Router();
 
@@ -26,17 +26,20 @@
   routerV1.delete('/product/deleted/:id', PRODUCT.delete);
 
 // Category
-  routerV1.get('/categorie/:id', CATEGORY.find);
+  routerV1.get('/categorie', CATEGORY.find);
+  routerV1.get('/categorie/:id', CATEGORY.findOne);
   routerV1.post('/categorie/created', valide(scheme.dataCategory.created,'body'), CATEGORY.created);
   routerV1.patch('/categorie/update/:id', CATEGORY.updateCategory);
   routerV1.delete('/categorie/deleted/:id', CATEGORY.delete);
 
-// Shopping Car
-  routerV1.get('/shopping/list/:id', SHOPPINGCAR.listshopping);
-  routerV1.get('/shopping/number/:id', SHOPPINGCAR.numberShoppin);
-  routerV1.delete('/shopping/deleted/id', SHOPPINGCAR.delete);
+// Order
+  routerV1.get('/shopping/list/:id', ORDERS.find);
+  routerV1.get('/shopping/list/:id', ORDERS.findOne);
+  routerV1.get('/shopping/list/:id', ORDERS.update);
+  routerV1.get('/shopping/number/:id', ORDERS.numberShoppin);
+  routerV1.delete('/shopping/deleted/id', ORDERS.delete);
 
-// Sales
+// OrdersProduct
 
 // Consumers
   routerV1.post('/consumer/register', valide(scheme.dataConsumer.created,'body'),CONSUMER.created);
@@ -46,6 +49,8 @@
   routerV1.get('/consumer/image/:id',CONSUMER.imageviw),
   routerV1.get('/consumer/find/',CONSUMER.find),
   routerV1.delete('/consumer/deleted',CONSUMER.delete),
+
+// admin
 
 
   module.exports = routerV1;

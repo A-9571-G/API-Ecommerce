@@ -23,7 +23,7 @@ module.exports ={
     }
   },
   find: async(req,res)=>{
-    const products = await models.Product.findAll();
+    const products = await models.Product.findAll({ include: ['category'] });
     return res.status(200).json(products);
   },
   updateProduct: async(req,res)=>{

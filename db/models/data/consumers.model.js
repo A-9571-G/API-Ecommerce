@@ -47,6 +47,10 @@ module.exports = {
   Consumers: class Consumers extends Model{
     static associate(models){
       this.belongsTo(models.User, {as: 'user'});
+      this.hasMany(models.Orders, {
+        as          : 'orders',
+        foreignKey  : 'consumerId'
+      });
     }
     static config(sequelize){
       return {

@@ -18,6 +18,12 @@ module.exports ={
     return res.status(200).json(category);
 
   },
+  findOne: async(req,res)=>{
+    const id = req.params.id;
+    console.log(id);
+    const category = await models.Category.findByPk( id, { include: ['products'] } );
+    return res.status(200).json(category);
+  },
   updateCategory: async(req,res)=>{
 
   },
