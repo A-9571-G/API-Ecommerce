@@ -23,9 +23,8 @@ module.exports = {
       type          : DataTypes.INTEGER,
       unique        : true,
       references    : {
-        model : USER_TABLE,
+        model  : USER_TABLE,
         key    : 'id'
-
       },
       onUpdate      : 'CASCADE',
       onDelete      : 'SET NULL'
@@ -47,7 +46,7 @@ module.exports = {
   Consumers: class Consumers extends Model{
     static associate(models){
       this.belongsTo(models.User, {as: 'user'});
-      this.hasMany(models.Orders, {
+      this.hasMany(models.Order, {
         as          : 'orders',
         foreignKey  : 'consumerId'
       });

@@ -33,16 +33,13 @@
   routerV1.delete('/categorie/deleted/:id', CATEGORY.delete);
 
 // Order
-  routerV1.get('/shopping/list/:id', ORDERS.find);
-  routerV1.get('/shopping/list/:id', ORDERS.findOne);
-  routerV1.get('/shopping/list/:id', ORDERS.update);
-  routerV1.get('/shopping/number/:id', ORDERS.numberShoppin);
+  routerV1.post('/order/:consumerId',valide(scheme.dataOrders.create,'params'), ORDERS.created);
+  routerV1.post('/order/add/product',valide(scheme.dataOrders.addItem, 'body'), ORDERS.addItem);
+  routerV1.get('/orders/findOne/:id', ORDERS.findOne);
   routerV1.delete('/shopping/deleted/id', ORDERS.delete);
 
-// OrdersProduct
-
 // Consumers
-  routerV1.post('/consumer/register', valide(scheme.dataConsumer.created,'body'),CONSUMER.created);
+  routerV1.post('/consumer/register',CONSUMER.created);
   routerV1.post('/login',USER.login);
   routerV1.patch('/consumer/update/:id',CONSUMER.update),
   routerV1.patch('/consumer/image/update/:id',CONSUMER.updateImage),
@@ -50,7 +47,7 @@
   routerV1.get('/consumer/find/',CONSUMER.find),
   routerV1.delete('/consumer/deleted',CONSUMER.delete),
 
-// admin
+// Admin
 
 
   module.exports = routerV1;

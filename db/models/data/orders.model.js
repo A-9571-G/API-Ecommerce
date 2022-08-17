@@ -17,15 +17,15 @@ module.exports = {
       type          : DataTypes.INTEGER
     },
     consumerId: {
-      field: 'consumer_id',
-      allowNull: false,
-      type: DataTypes.INTEGER,
+      field         : 'consumer_id',
+      allowNull     : false,
+      type          : DataTypes.INTEGER,
       References: {
         model: CONSUMERS_TABLE,
-        key: 'id',
+        key: 'id'
       },
-      onUpdate : 'CASCADA',
-      onDelete : 'SET NULL'
+      onUpdate      : 'CASCADE',
+      onDelete      : 'SET NULL'
     },
     Pay : {
       allowNull     : false,
@@ -33,7 +33,6 @@ module.exports = {
       defaultValue  : '0000-0000-0000-0000'
     },
     location: {
-      allowNull     : true,
       type          : DataTypes.STRING
     },
     createdAt : {
@@ -52,7 +51,7 @@ module.exports = {
   // CLASS
   Orders: class Orders extends Model{
     static associate(models){
-      this.belongsTo(models.Consumers, { as: 'Consumers' });
+      this.belongsTo(models.Consumers, { as: 'consumer' });
       this.belongsToMany(models.Product, {
         as         :  'items',
         through    :  models.OrdersProduct,
@@ -64,7 +63,7 @@ module.exports = {
       return {
         sequelize,
         tableName  : ORDERS_TABLE,
-        modelName  : 'Orders',
+        modelName  : 'Order',
         TimeRanges : false
       }
     }

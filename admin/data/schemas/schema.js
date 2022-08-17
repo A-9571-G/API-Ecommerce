@@ -11,6 +11,7 @@ const {register} = require('./data/user.schema');
 const dataConsumer = require('./data/consumers.schema');
 const dataCategory = require('./data/category.schema');
 const dataProduct = require('./data/product.schema');
+const dataOrders = require('./data/orders.schema');
 
 // STRUCTURE
 module.exports = {
@@ -23,5 +24,6 @@ module.exports = {
   },
   dataConsumer,
   dataCategory,
-  dataProduct
+  dataProduct,
+  dataOrders
 }

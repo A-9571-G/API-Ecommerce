@@ -18,17 +18,6 @@ module.exports = {
       primaryKey    : true,
       type          : DataTypes.INTEGER
     },
-    consumerId: {
-      field: 'consumer_id',
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      References: {
-        model: CONSUMERS_TABLE,
-        key: 'id',
-      },
-      onUpdate : 'CASCADA',
-      onDelete : 'SET NULL'
-    },
     orderId:{
       field: 'order_Id',
       allowNull: false,
@@ -37,10 +26,10 @@ module.exports = {
         model: ORDERS_TABLE,
         key: 'id',
       },
-      onUpdate : 'CASCADA',
-      onDelete : 'SET NULL'
+      onUpdate      : 'CASCADE',
+      onDelete      : 'SET NULL'
     },
-    ProductId:{
+    productId:{
       field: 'product_Id',
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -48,18 +37,18 @@ module.exports = {
         model: PRODUCT_TABLE,
         key: 'id',
       },
-      onUpdate : 'CASCADA',
-      onDelete : 'SET NULL'
+      onUpdate      : 'CASCADE',
+      onDelete      : 'SET NULL'
+    },
+    amount: {
+      allowNull : false,
+      type      : DataTypes.INTEGER
     },
     createdAt : {
       allowNull     : false ,
       type          : DataTypes.DATE,
       field         : 'create_at',
       defaultValue  : Sequelize.NOW
-    },
-    amount: {
-      allowNull : false,
-      type      : DataTypes.INTEGER
     },
     updatedAt : {
       allowNull     : true ,
