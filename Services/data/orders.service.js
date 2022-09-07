@@ -9,7 +9,7 @@ module.exports ={
     try{
       const data = req.params;
       const constumer = await models.Consumers.findOne({where:{id : data.consumerId }});
-      if(!constumer) return next(boom.badRequest(err));
+      if(!constumer) return next(boom.badRequest(error));
       const newOrder = await models.Order.create(data);
       return res.status(201).json(newOrder);
     }catch (err){

@@ -19,12 +19,11 @@ module.exports ={
 
   },
   findOne: async(req,res)=>{
-    const id = req.params.id;
-    console.log(id);
-    const category = await models.Category.findByPk( id, { include: ['products'] } );
+    const params = req.params;
+    const category = await models.Category.findByPk( params.id, { include: ['products'] } );
     return res.status(200).json(category);
   },
-  updateCategory: async(req,res)=>{
+  updateCategory: async()=>{
 
   },
   delete: async()=>{

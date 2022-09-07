@@ -8,7 +8,6 @@
 module.exports = {
 
   logError         : async ( err, req, res, next )=>{
-    console.error(err);
     next(err);
   },
   errorHandler     : async ( err, req, res, next )=>{

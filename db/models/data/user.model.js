@@ -48,7 +48,6 @@ module.exports = {
       this.hasOne(models.Consumers,{
         as: 'consumer',
         foreignKey: 'userId'
-
       });
     }
     static config(sequelize){

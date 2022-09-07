@@ -1,14 +1,15 @@
 const joi = require('joi');
 
 const structure = {
-  id: joi.string().uuid(),
+  id: joi.number().integer(),
+  categoryId: joi.number().integer(),
   name: joi.string().min(3).max(15),
   price: joi.number(),
   stock: joi.number(),
   img : joi.string(),
   description: joi.string(),
-  categoryId : joi.number(),
-  print: joi.number().integer().min(10)
+  print: joi.number().integer().min(10),
+  update: joi.date()
 }
 
 module.exports = {
@@ -17,8 +18,20 @@ module.exports = {
     name         :  structure.name.required(),
     price        :  structure.price.required(),
     description  :  structure.description,
-    categoryId   :  structure.categoryId.required(),
     img          :  structure.img,
     stock        :  structure.stock.required()
+  }),
+  update: joi.object({
+    name: structure.name,
+    description: structure.description,
+    updatedAt: structure.update
+  }),
+  // params
+  createdParams: joi.object({
+    //id: structure.id.required(),
+    categoryId: structure.categoryId.required()
+  }),
+  id: joi.object({
+    id: structure.id.required()
   })
 }

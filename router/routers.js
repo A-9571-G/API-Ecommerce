@@ -1,8 +1,6 @@
 "use strict"
 //CONST
   const express = require('express');
-  const {scheme, value, midelware, valide} = require('../admin/admin');
-  const { USER, CATEGORY, PRODUCT, SHOPPINGCAR } = require('../Services/Controllers');
   const routerV1 = require('./data/v1.routers');
 //MIDELWARE
 
