@@ -2,7 +2,6 @@
 
 // CONST
   const {ValidationError} = require('sequelize');
-  const boom = require('@hapi/boom');
 
 // STRUCTURE
 module.exports = {
@@ -15,6 +14,7 @@ module.exports = {
       message: err.message,
       stack: err.stack,
     });
+    next;
   },
   boomErrorHandler : async ( err, req, res, next ) =>{
     if (err.isBoom) {

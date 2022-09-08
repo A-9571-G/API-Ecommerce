@@ -23,7 +23,7 @@ module.exports ={
     }
 
   },
-  product: async( req, res )=>{
+  product: async( )=>{
 
   },
   findOne: async( req, res, next )=>{
@@ -60,13 +60,13 @@ module.exports ={
       next(boom.badRequest(err));
     }
   },
-  updateImage: async( req, res )=>{
+  updateImage: async( )=>{
 
   },
-  saleProduct: async( req, res )=>{
+  saleProduct: async( )=>{
 
   },
-  imageviw: async(req,res)=>{
+  imageviw: async( )=>{
 
   },
   delete: async(req, res, next)=>{
@@ -78,5 +78,4 @@ module.exports ={
       next(boom.badRequest(err));
     }
   }
-
 }

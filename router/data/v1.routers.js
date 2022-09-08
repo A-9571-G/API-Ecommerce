@@ -23,7 +23,7 @@
 // Consumers
   routerV1.post('/consumer/register', Handler(dataConsumer.created,'body') ,CONSUMER.created);
   routerV1.patch( '/consumer/update/:id',Handler(dataConsumer.update,'body' ),Handler(dataConsumer.id,'params') ,CONSUMER.update);
-  routerV1.patch('/consumer/image/update/:id',Handler(),CONSUMER.updateImage);
+  routerV1.patch('/consumer/image/update/:id',CONSUMER.updateImage);
   routerV1.get('/consumer/image/:id',CONSUMER.imageviw);
   routerV1.get('/consumer/find/', CONSUMER.find);
   routerV1.get('/consumer/findOne/:id',Handler(dataConsumer.id,'params'),CONSUMER.findOne);
@@ -41,17 +41,18 @@
   routerV1.delete('/product/deleted/:id', PRODUCT.delete);
 
 // Category
-  routerV1.get('/categorie', CATEGORY.find);
-  routerV1.get('/categorie/:id', CATEGORY.findOne);
-  routerV1.post('/categorie/created', Handler(dataCategory.created,'body'), CATEGORY.created);
-  routerV1.patch('/categorie/update/:id', CATEGORY.updateCategory);
-  routerV1.delete('/categorie/deleted/:id', CATEGORY.delete);
+  routerV1.get('/categorie',Handler(dataCategory.created,'body'),CATEGORY.find);
+  routerV1.get('/categorie/:id',Handler(dataCategory.id, 'params'), CATEGORY.findOne);
+  routerV1.post('/categorie/created',Handler(dataCategory.created,'body'), CATEGORY.created);
+  routerV1.patch('/categorie/update/:id',Handler(dataCategory.update, 'body'), CATEGORY.updateCategory);
+  routerV1.delete('/categorie/deleted/:id',Handler(dataCategory.id, 'params'),CATEGORY.delete);
 
 // Order
   routerV1.post('/order/:consumerId',Handler(dataOrders.create,'params'), ORDERS.created);
   routerV1.post('/order/add/product',Handler(dataOrders.addItem, 'body'), ORDERS.addItem);
-  routerV1.get('/orders/findOne/:id', ORDERS.findOne);
-  routerV1.delete('/shopping/deleted/id', ORDERS.delete);
+  routerV1.get('/orders/findOne/:id',Handler(dataOrders.id, 'params') ,ORDERS.findOne);
+  routerV1.get('/orders/find',ORDERS.find);
+  routerV1.delete('/orders/delete/:id',Handler(dataOrders.id, 'params'),ORDERS.delete);
 
 // Admin
   routerV1.post('/admin/login/:key');

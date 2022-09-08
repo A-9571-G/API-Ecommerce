@@ -9,6 +9,7 @@ const joi = require('joi');
   const amount = joi.number().integer().min(1);
 
   module.exports = {
+    // body
     getOrder : joi.object({
       id: id.required(),
     }),
@@ -19,5 +20,9 @@ const joi = require('joi');
       orderId: orderId.required(),
       productId: productId.required(),
       amount: amount.required(),
+    }),
+    // params
+    id: joi.object({
+      id: id.required()
     })
   };
